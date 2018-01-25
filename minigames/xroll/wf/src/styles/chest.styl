@@ -1,0 +1,712 @@
+@import "./vars.styl"
+
+
+.chest-page
+  display flex
+  width 100%
+  height 709px
+  box-sizing border-box
+  &__content
+    padding 0 0 0 30px
+    width 970px
+    box-sizing border-box
+    position relative
+
+.chest-menu
+  overflow hidden
+  height 100%
+  width 279px
+  padding 0 13px
+  box-sizing border-box
+  color $clr_blue
+  border-right 1px solid $clr_blue_dim
+  &__header
+    margin 10px 0
+    color $clr_blue
+    text-transform uppercase
+    {b_txt_qu20}
+    font-weight normal
+  &__item
+    padding 5px 0 5px 10px
+    margin 0 0 10px 0
+    color $clr_white
+    text-transform uppercase
+    cursor pointer
+    {b_txt_qu14}
+    f_simple_border()
+    f_simple_bg(,0.1)
+    &:hover
+      f_simple_bg(,0.15)
+    &--active
+      cursor default
+      f_simple_bg(,0.2)
+      &:hover
+        f_simple_bg(,0.2)
+.chest-how-to
+  width 100%
+  &__header
+    margin 10px 0
+    color $clr_blue
+    text-transform uppercase
+    {b_txt_qu20}
+    font-weight normal
+
+.chest-manual
+  width 700px
+  margin 50px auto
+  color $clr_white
+  {b_txt_pl16}
+  &__step-1
+    width 240px
+    float left
+    margin-bottom 30px
+  &__step-2
+    width 240px
+    float right
+  &__step-3
+    margin-top 5px
+    text-align center
+  &__image
+    height height('chest/images/rules.png')
+    width width('chest/images/rules.png')
+    margin 30px auto
+    clear both
+    background resolve('chest/images/rules.png')
+  &__total
+    margin 10px 0
+    text-align center
+    color $clr_blue
+    {b_txt_pl16}
+  &__value
+    {b_txt_qu20}
+  &__button
+    {main_button}
+    width 170px
+    height 30px
+    margin 100px auto 0
+    {b_txt_qu14}
+    box-sizing border-box
+.create-chest
+  &__header
+    margin 10px 0
+    color $clr_blue
+    text-transform uppercase
+    {b_txt_qu20}
+    font-weight normal
+.create-chest-step
+  &__header
+    margin 10px 0
+    color $clr_white
+    text-transform uppercase
+    {b_txt_qu14}
+    font-weight normal
+  &__button
+    {main_button}
+    width 170px
+    height 30px
+    margin 90px auto 0
+    box-sizing border-box
+  &--1
+     .create-chest-step__button
+        margin-top 20px
+  &--2
+    .create-chest-step__button
+      margin-top 5px
+  &__description {
+    color $clr_white
+    {b_txt_pl16}
+    p {
+      margin 0
+      padding 0
+    }
+  }
+.create-chest-form
+  &__input
+    width 85%
+    color $clr_blue
+    {b_txt_pl16}
+    height 30px
+    line-height 30px
+    box-sizing border-box
+    padding 0 5px
+    f_simple_border()
+    background transparent
+    &::-webkit-input-placeholder
+      color $clr_blue
+    &::-moz-placeholder
+      color $clr_blue
+    &:-moz-placeholder
+      color $clr_blue
+    &:-ms-placeholder
+      color $clr_blue
+  &__skin-wrapper
+    display flex
+    flex-wrap wrap
+    justify-content space-between
+    align-content space-between
+    margin-top 40px
+    height 490px
+  &__skin
+    box-sizing border-box
+    width 296px
+    height 246px
+    border 1px solid transparent
+    cursor pointer
+    f_simple_bg(,0.1)
+    &:hover
+      f_simple_border($clr_orange, 0.25)
+    &--active
+      f_simple_border($clr_orange)
+      f_box_glow($clr_orange)
+      &:hover
+        f_simple_border($clr_orange)
+
+
+    for $i in (1..8)
+      &[data-id=\"{$i}\"]
+        background resolve(s('chest/images/skins/%s.png', $i )) center center no-repeat
+
+.chest-pick-form
+  margin-top 10px
+  &__total
+    position absolute
+    bottom 10px
+    color $clr_orange
+.chest-filters
+  display flex
+  overflow visible
+  justify-content space-between
+  &__filters-wrapper
+    display flex
+    margin: 0 20px 0 0
+.chest-scroll
+  height 510px
+  margin-top 10px
+
+.chest-items
+  display flex
+  flex-wrap wrap
+  &__icon
+    position absolute
+    top 5px
+    right 5px
+    border-radius 50%
+    border 1px solid $clr_white
+    width 30px
+    height 30px
+    padding: 4px 5px
+    .icon
+      color $clr_white
+      font-size 18px
+      line-height 18px
+  &__image
+    z-index 0
+    display block
+    position absolute
+    top 56%
+    left 50%
+    margin-left -119.5px
+    margin-top -55.5px
+  &__hint-message
+    display none
+    color $clr_white
+    position absolute
+    top 0
+    height 100%
+    width 100%
+    align-items center
+    justify-content center
+    {b_txt_pl12}
+    padding 0 40px
+    white-space pre-wrap
+    text-align center
+  &__item
+    cursor pointer
+    padding 8px
+    position relative
+    box-sizing border-box
+    width 300px
+    height 160px
+    color $clr_white
+    {b_txt_pl16}
+    line-height 16px
+    background-color rgba($clr_blue, 0.2)
+    margin 0 10px 10px 0
+    user-select none
+    f_simple_border($clr_blue)
+    &-name
+      width 250px
+      z-index 1
+    &--active
+      f_simple_border($clr_orange, 0.9)
+    &--disable
+      cursor default
+      background-color rgba($clr_blue, 0.1)
+      &:hover
+        .chest-items__hint-message
+          display flex
+      .chest-items__image
+        opacity 0.35
+    &-cost
+      position absolute
+      left 8px
+      bottom 5px
+      .icon
+        vertical-align middle
+
+.submenu-create-chest
+  color $clr_white
+  &__item
+    padding 5px 0
+    text-transform uppercase
+    border-bottom 1px solid rgba($clr_blue_dim, 0.5)
+    {b_txt_qu14}
+    &--active
+      color $clr_orange
+.submenu-create-chest-items
+  margin 5px 0 0 0
+  padding-right 20px
+  &__item
+    position relative
+    width 100%
+    height 40px
+    //f_simple_bg(,0.2)
+    margin-bottom 5px
+    text-align center
+    &-delete
+      position absolute
+      right 20px
+      top 5px
+      cursor pointer
+      font-size 22px
+      color $clr_blue_dim
+      z-index 2
+    &-img
+      height 40px
+      img
+        padding 2px 0
+        height 36px
+
+.submenu-create-chest-items-scroll
+  max-height 275px
+.scroll-my-chests
+  max-height 520px
+  margin-bottom 10px
+.submenu-my-chests
+  &__button
+    {main_button}
+    margin-top 78px
+  &__item
+    width 232px
+    box-sizing border-box
+    border 1px solid transparent
+    height 232px
+    margin-bottom 30px
+    cursor pointer
+    &:last-child
+      margin-bottom 0
+    for $i in (1..8)
+      &[data-skin-id=\"{$i}\"]
+        background resolve(s('chest/images/skins/%s.png', $i )) center center no-repeat
+        background-size 72%
+        background-position-y 65%
+    &--active
+      f_simple_border($clr_orange)
+      f_box_glow($clr_orange)
+      cursor default
+    &-name
+      color $clr_white
+      {b_txt_pl16}
+      margin 10px
+      word-break break-word
+      word-wrap break-word
+
+.chest-chance-form-head
+  width 920px
+  height 32px
+  text-align center
+  color $clr_grey
+  margin-top 10px
+  f_simple_bg(#000000, 0.6)
+  text-transform uppercase
+  {b_text_pl16}
+  font-size 14px
+  border-collapse collapse
+  table-layout fixed
+  td
+    border 1px solid rgba($clr_blue, 0.5)
+    box-sizing border-box
+.chest-chance-form
+  width 920px
+  border-collapse collapse
+  table-layout fixed
+  td
+    border 1px solid rgba($clr_blue, 0.5)
+    f_simple_bg(,0.2)
+    box-sizing border-box
+  &__item
+    height 62px
+    box-sizing border-box
+    padding 18px 0
+    text-align center
+    &-img
+      display inline-block
+      width 140px
+      text-align center
+      vertical-align middle
+      margin-right 20px
+      img
+        width 140px
+    &-name
+      width 280px
+      display inline-block
+      color $clr_white
+      {b_txt_pl16}
+      text-align left
+      line-height 30px
+      vertical-align middle
+
+    &-cost
+      display inline-block
+      color $clr_white
+      {b_txt_pl16}
+      text-align left
+      line-height 30px
+      .icon
+        vertical-align middle
+    &-chance-wrapper
+      position relative
+      width 90px
+      margin 0 auto
+    &-chance-percent
+      position absolute
+      top 5px
+      right 9px
+      color $clr_blue
+    &-chance
+      text-align right
+      width 90px
+      box-sizing border-box
+      height 30px
+      padding 5px 23px 5px 8px
+      background transparent
+      color $clr_blue
+      f_simple_border(,0.4)
+      {b_txt_pl16}
+      -moz-appearance textfield
+      &::-webkit-outer-spin-button, &::-webkit-inner-spin-button
+        -webkit-appearance none
+      &::-webkit-input-placeholder
+        color $clr_blue
+      &::-moz-placeholder
+        color $clr_blue
+      &:-moz-placeholder
+        color $clr_blue
+      &:-ms-placeholder
+        color $clr_blue
+
+.chest-chance-info
+  margin-top 10px
+  display flex
+  width 97%
+  justify-content space-between
+  &__cost, &__percent
+    color $clr_orange
+    {b_txt_qu16}
+    text-transform uppercase
+    icon
+      vertical-align middle
+
+.chest-chance-buttons
+  overflow hidden
+  display flex
+  &__button
+    width 220px
+    height 30px
+    {main_button}
+    margin 10px auto 0
+    box-sizing border-box
+
+.chest-chance-scroll
+  max-height 443px
+.create-chest-success
+  color $clr_blue
+  text-align center
+  {b_txt_pl16}
+  margin-left 88px
+  margin-top 112px
+  width 692px
+  position absolute
+  top 0
+  &__close
+    display block
+    position absolute
+    background resolve('interfaces/images/elements/close.png') 0 0 no-repeat
+    width 15px
+    height 15px
+    transition all .1s linear
+    cursor pointer
+    top 10px
+    right 10px
+    background-size contain
+    margin-left -12px
+    &:hover
+      filter grayscale(100%)
+  &__wrapper
+    background #000000
+    min-height 425px
+    width 100%
+    overflow hidden
+  &__header
+    {b_txt_qu20}
+    font-weight normal
+    text-transform uppercase
+    margin 45px 0
+  &__img-wrapper
+    height 180px
+    background radial-gradient(ellipse at center, #14403e 0%,#000000 50%)
+  &__img
+    width 100%
+    height 100%
+    for $i in (1..8)
+      &[data-skin-id=\"{$i}\"]
+        background resolve(s('chest/images/skins/%s.png', $i )) center center no-repeat
+        background-size contain
+  &__name-wrapper
+    margin 20px 0
+  &__name
+    color #ffffff
+    {b_txt_qu16}
+    text-transform uppercase
+  &__button
+    {main_button}
+    width 260px
+    height 30px
+    margin 20px auto 0
+    box-sizing border-box
+  &__cost-wrapper
+    margin-bottom 15px
+    icon
+      vertical-align middle
+.create-chest-exists
+  color $clr_blue
+  {b_txt_pl16}
+  p
+    margin 0
+  &__wrapper
+    display flex
+    justify-content space-between
+    margin 80px 200px 0 150px
+    width 660px
+  &__item
+    width 200px
+    height 200px
+    &-name
+      color $clr_white
+      {b_txt_pl16}
+      text-align center
+    &-img
+      height 120px
+      width 100%
+      margin 20px 0
+      for $i in (1..8)
+        &[data-id=\"{$i}\"]
+          background resolve(s('chest/images/skins/%s.png', $i )) center center no-repeat
+          background-size contain
+  &__button
+    {main_button}
+    width 180px
+    height 30px
+    margin 20px auto 0 auto
+    .icon
+      vertical-align middle
+
+.my-chest
+  &__header
+    color $clr_blue
+    {b_txt_qu20}
+    text-transform uppercase
+    margin 30px 0
+.my-chest-empty
+  p
+    {b_txt_pl16}
+    color $clr_blue
+.chest-info
+  &__name
+    color $clr_white
+    {b_txt_pl16}
+    font-size 22px
+    text-transform uppercase
+    margin-bottom 40px
+    position relative
+  &__free-open-hint
+    position absolute
+    bottom -48px
+    {b_txt_pl16}
+    text-transform none
+  &__controls
+    display flex
+    width 800px
+    margin 0 auto
+    justify-content space-around
+  &__button
+    {main_button}
+    width 220px
+    height 30px
+    margin 20px 0 0 0
+    opacity 1
+    .icon
+      vertical-align middle
+    &--disable
+      background $clr_grey
+      opacity 0.6
+.chest-info-items
+  display flex
+  flex-wrap wrap
+  f_simple_border
+  margin-top 20px
+  padding-left 2px
+  padding-bottom 2px
+  position relative
+  min-height 454px
+  align-content flex-start
+  &__image
+    z-index 0
+    display block
+    position absolute
+    top 56%
+    left 50%
+    margin-left -115px
+    margin-top -61px
+    img
+      width 100%
+  &__item
+    padding 8px
+    position relative
+    box-sizing border-box
+    width 230px
+    height 140px
+    color $clr_white
+    {b_txt_pl16}
+    font-size 14px
+    line-height 16px
+    background transparent
+    margin 5px 5px 0 0
+    user-select none
+    f_simple_border(transparent, 0)
+    &:nth-child(4n + 4)
+      margin-right 0
+    &--active
+      f_simple_bg($clr_blue, 0.1)
+      f_simple_border($clr_blue, 0.2)
+      & > *
+        visibility visible
+    &--animate
+      f_simple_bg($clr_blue, 0.22)
+    &--animate-bad
+      background-image resolve('chest/images/weapons/bad_item.png') !important
+      background-position-y center
+      background-repeat no-repeat
+      background-position-x center
+      & > *
+        visibility hidden
+    &--opened
+      f_simple_border($clr_orange)
+      position absolute
+      top 50%
+      left 50%
+      margin-top -77px
+      margin-left -111px
+      transform scale(1.6) !important
+      transition all .5s ease-in-out
+      & > *
+        visibility visible
+  &__name
+    color $clr_white
+    position relative
+    z-index 2
+  &__points
+    color $clr_grey
+    position absolute
+    left 8px
+    bottom 5px
+    .icon
+      vertical-align middle
+  &__chance
+    color $clr_grey
+    position absolute
+    right 8px
+    bottom 5px
+.chest-progress
+  width 936px
+  height 2px
+  margin 30px 0 20px
+  position relative
+  f_simple_bg($clr_blue_dim, 0.5)
+  &__active
+    position absolute
+    top 0
+    left 0
+    width 0
+    height 2px
+    f_simple_bg($clr_orange, 0.9)
+.chest-opened-item
+  background-color black
+  background radial-gradient(ellipse at center, #14403e 0%,#000000 50%)
+  width 693px
+  height 284px
+  margin 82px 0 82px 112px
+  padding 30px
+  box-sizing border-box
+  &__header
+    color $clr_blue
+    text-transform uppercase
+    text-align center
+    {b_txt_qu16}
+  &__name
+    color $clr_grey
+    text-transform uppercase
+    text-align center
+    {b_txt_qu16}
+  &__img
+    width 226px
+    height 126px
+    margin 30px auto
+.chest-opened-message
+  text-align left
+  padding-left 414px
+  margin 30px auto
+  line-height 30px
+  position relative
+  &__text, &__animated
+    {b_txt_pl16}
+    text-transform uppercase
+  &__animated-wrapper
+    display inline-block
+    position relative
+    width 0
+    height 30px
+    overflow hidden
+    text-align left
+  &__animated
+    line-height 15px
+    position absolute
+    bottom -1px
+    white-space nowrap
+
+.chest-blocker
+  position fixed
+  z-index 100000
+  background transparent
+  width 100%
+  height 100%
+  display block
+  top 0
+  left 0
+  cursor wait
+.chest-items-empty
+  width 100%
+  height 510px
+  display flex
+  justify-content center
+  align-items center

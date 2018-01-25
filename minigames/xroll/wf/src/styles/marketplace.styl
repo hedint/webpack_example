@@ -1,0 +1,216 @@
+
+@import "./vars.styl"
+.marketplace-page
+  width 100%
+  height 716px
+  box-sizing border-box
+  {b_txt_pl16}
+  &__header
+    color $clr_blue
+    {b_txt_qu20}
+    text-transform uppercase
+    font-weight normal
+    margin 10px 0 15px 0
+    line-height 22px
+    .icon
+      vertical-align middle
+      font-size 18px
+      height 18px
+    &-text
+      vertical-align middle
+  &__description
+    color $clr_grey
+    {b_txt_pl16}
+    margin 0 20px
+.marketplace-filters
+  display flex
+  overflow visible
+  justify-content space-between
+  margin 0 22px
+  &__filters-wrapper
+    display flex
+.marketplace-tabs
+  display flex
+  f_simple_bg($clr_blue_dim, 0.4)
+  height 30px
+  width 420px
+  margin 15px auto
+  align-items center
+  justify-content space-around
+  box-sizing border-box
+  &__tab
+    color $clr_blue
+    {b_txt_qu14}
+    text-transform uppercase
+    cursor pointer
+    &:hover
+      color $clr_orange
+    &--active
+      color $clr_grey
+      cursor default
+      &:hover
+        color $clr_grey
+.marketplace-table-wrapper
+  max-height 443px
+.marketplace-table
+  margin 20px 0 0 22px
+  width 1206px
+  box-sizing border-box
+  f_simple_border($clr_blue)
+  border-collapse collapse
+  border-spacing 0
+  table-layout
+  &--main
+    margin-top 0
+  tr
+    height 48px
+  td, th
+    height 48px
+    {b_txt_pl16}
+    text-align center
+    line-height 20px
+    padding 0 14px
+    box-sizing border-box
+    vertical-align middle
+    f_simple_border($clr_blue)
+    border-collapse collapse
+  th
+    text-transform uppercase
+    color $clr_grey
+    f_simple_bg($clr_blue)
+  td
+
+    color $clr_white
+    f_simple_bg($clr_blue, 0.08)
+  td&__item
+    &--name
+      text-align left
+      color unset
+    &--button
+      padding 0
+    &--image
+      img
+        height 42px
+        vertical-align middle
+
+  th&__item
+    &--name
+      width 416px
+      cursor pointer
+    &--image
+      width 256px
+    &--count
+      width 139px
+      cursor pointer
+    &--cost
+      width 277px
+      cursor pointer
+    &--datetime
+      width 277px
+    &--history-cost
+      width 139px
+    &--button, &--status
+      width 117px
+  td&__item
+    &--name
+      width 416px
+    &--image
+      width 256px
+    &--count
+      width 139px
+    &--cost
+      width 277px
+    &--datetime
+      width 277px
+    &--history-cost
+      width 139px
+    &--button, &--status
+      width 117px
+  &--my-items
+    th.marketplace-table__item--name,  td.marketplace-table__item--name
+      width 555px
+
+.marketplace-buy-button
+  {main_button}
+  line-height 48px
+  height 100%
+.marketplace-active-item
+  position absolute
+  top 50%
+  left 50%
+  margin-left: -200px
+  margin-top -150px
+  width 400px
+  height 300px
+  background rgba(#000000, 0.8)
+  padding 20px
+  &__close
+    position absolute
+    background resolve('interfaces/images/elements/close.png') 0 0 no-repeat
+    width 15px
+    height 15px
+    transition all .1s linear
+    cursor pointer
+    top 10px
+    right 10px
+    background-size contain
+    margin-left -12px
+    &:hover
+      filter grayscale(100%)
+  &__image-wrapper
+    text-align center
+    margin 20px 0
+  &__cost
+    text-align center
+    margin 20px 0
+  &__name
+    {b_txt_qu16}
+    text-transform uppercase
+    font-weight normal
+    text-align center
+  &__button
+    {main_button}
+    width 150px
+    margin 20px auto
+    display block
+.custom-sortable
+  position relative
+  cursor pointer
+  &--asc
+    &:after
+      content ""
+      width 0
+      height 0
+      position absolute
+      right 5px
+      top 50%
+      border-width 0 6px 6px 6px
+      border-style solid
+      border-color $clr_blue transparent
+      margin-top -3px
+
+  &--desc
+    &:after
+      content ""
+      width 0
+      height 0
+      position absolute
+      right 5px
+      top 50%
+      border-width 6px 6px 0 6px
+      border-style solid
+      border-color $clr_blue transparent
+      margin-top -3px
+
+
+.marketplace-empty
+  {b_txt_pl16}
+  display flex
+  align-items center
+  text-align center
+  justify-content center
+  f_simple_border($clr_blue)
+  background-color rgba($clr_blue, 0.15)
+  margin 0 auto 0 auto
+  width 1206px
+  height 452px

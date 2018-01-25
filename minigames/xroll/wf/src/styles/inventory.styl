@@ -1,0 +1,348 @@
+
+@import "vars.styl"
+.inventory-page
+  width 100%
+  height 712px
+  box-sizing border-box
+  {b_txt_pl16}
+  &__header
+    color $clr_blue
+    {b_txt_qu20}
+    text-transform uppercase
+    font-weight normal
+    margin 10px 0 15px 0
+    line-height 22px
+    .icon
+      vertical-align middle
+      font-size 18px
+      height 18px
+    &-text
+      vertical-align middle
+  &__content-wrapper
+    margin 20px 0 20px 26px
+  &__description
+   {b_txt_pl16}
+    margin 0
+   color $clr_grey
+.inventory-filters
+  display flex
+  overflow visible
+  justify-content space-between
+  margin-right 18px
+  &__filters-wrapper
+    display flex
+.inventory-items
+  position relative
+  display flex
+  &__wrapper
+    display flex
+    flex-wrap wrap
+    width 790px
+    justify-content space-between
+    margin-left 26px
+  &__no-items
+    {b_txt_pl16}
+    display flex
+    align-items center
+    text-align center
+    justify-content center
+    f_simple_border($clr_blue)
+    background-color rgba($clr_blue, 0.15)
+    width 790px
+    margin 10px 0 0 26px
+  &__active
+    margin-top 10px
+    width 390px
+    height 502px
+    box-sizing border-box
+    f_simple_border($clr_blue)
+    background-color rgba($clr_blue, 0.15)
+.inventory-items-scroll
+  max-height 502px
+  width 834px
+  margin 10px 0 0 0
+.inventory-item
+  cursor pointer
+  padding 12px
+  position relative
+  box-sizing border-box
+  width 390px
+  height 160px
+  color $clr_white
+  {b_txt_pl16}
+  line-height 16px
+  background-color rgba($clr_blue, 0.15)
+  margin 0 0 11px 0
+  user-select none
+  f_simple_border($clr_blue)
+  $items = unique_item_id_1 unique_item_id_2 unique_item_id_3 unique_item_id_4 unique_item_id_5 unique_item_id_6 unique_item_id_7 unique_item_id_8 unique_item_id_9 unique_item_id_10 unique_item_id_11 unique_item_id_12 unique_item_id_13 unique_item_id_14 unique_item_id_15 unique_item_id_16
+  for $item, $i in $items
+    &[data-id=\"{$item}\"]
+      background-image  resolve(s('chest/images/weapons/%s.png', $item))
+      background-position center 75%
+      background-repeat no-repeat
+  &--active
+    f_simple_border($clr_orange, 0.9)
+  &--disable
+    opacity 0.5
+    cursor default
+  &:nth-last-of-type(-n+2)
+    margin-bottom 0
+  &__duration
+    position absolute
+    left 12px
+    bottom 9px
+    color $clr_grey
+  &__count
+    position absolute
+    right 12px
+    bottom 9px
+    color $clr_grey
+  &__name
+    z-index 1
+  &__icon-lock
+    position absolute
+    top 5px
+    right 5px
+    border-radius 50%
+    border 1px solid $clr_white
+    width 30px
+    height 30px
+    padding 4px 5px
+    .icon
+      color $clr_white
+      font-size 18px
+      line-height 18px
+  &__image
+    z-index 0
+    display block
+    position absolute
+    top 56%
+    left 50%
+    margin-left -119.5px
+    margin-top -55.5px
+
+
+.inventory-tabs
+  display flex
+  f_simple_bg($clr_blue_dim, 0.4)
+  height 30px
+  width 420px
+  margin 10px auto 15px auto
+  align-items center
+  justify-content space-around
+  box-sizing border-box
+  &__tab
+    color $clr_blue
+    {b_txt_qu14}
+    text-transform uppercase
+    cursor pointer
+    &:hover
+      color $clr_orange
+    &--active
+      color $clr_grey
+      cursor default
+      &:hover
+        color $clr_grey
+.inventory-tab-cont
+  padding 0 12px
+
+  &__description
+    color $clr_white
+    {b_txt_pl16}
+    margin-bottom 3px
+  &__hint
+    font-size 10px
+    color $clr_grey
+  &__cant-trade-now
+    margin 75px 0
+  &__input
+    width 50px
+    height 30px
+    line-height 30px
+    text-align center
+    background rgba($clr_blue, .04)
+    border 1px solid rgba($clr_blue, .5)
+    color $clr_blue
+    {b_txt_pl16}
+    margin 0 5px
+    f_box_glow($clr_blue, 'in',,6px)
+    &::-webkit-outer-spin-button, &::-webkit-inner-spin-button
+      -webkit-appearance none
+  &__row
+    margin-bottom 15px
+    display flex
+    align-items center
+    {b_txt_pl16}
+    color $clr_white
+  label
+    padding-left 12px
+    line-height 1.1
+  .icon
+    height 16px
+  &__sell-form
+    margin 75px 0
+  &__button
+    {main_button}
+    width 220px
+  &--to-game
+    .inventory-tab-cont__button
+      width 170px
+  &--trade
+    padding 0
+    .inventory-tab-cont__description
+      margin 20px 0
+      padding 0 12px
+.inventory-item-active
+  padding 12px
+  position relative
+  box-sizing border-box
+  width 388px
+  height 158px
+  margin 0 auto
+  color $clr_white
+  {b_txt_pl16}
+  line-height 16px
+
+  user-select none
+  $items = unique_item_id_1 unique_item_id_2 unique_item_id_3 unique_item_id_4 unique_item_id_5 unique_item_id_6 unique_item_id_7 unique_item_id_8 unique_item_id_9 unique_item_id_10 unique_item_id_11 unique_item_id_12 unique_item_id_13 unique_item_id_14 unique_item_id_15 unique_item_id_16
+  for $item, $i in $items
+    &[data-id=\"{$item}\"]
+      background-image  resolve(s('chest/images/weapons/%s.png', $item))
+      background-position center 75%
+      background-repeat no-repeat
+  &__duration
+    position absolute
+    left 12px
+    bottom 9px
+    color $clr_grey
+  &__name
+    position relative
+    z-index 1
+  &__count
+    position absolute
+    right 12px
+    bottom 9px
+    color $clr_grey
+  &__image
+    z-index 0
+    display block
+    position absolute
+    top 50%
+    left 50%
+    margin-left -119.5px
+    margin-top -55.5px
+.inventory-char-select
+  color $clr_blue
+  min-height 110px
+  margin 20px 0
+  display flex
+  flex-wrap wrap
+  align-items center
+  label
+    {b_txt_pl16}
+    display flex
+    align-items center
+  .icon
+    font-size 8px
+    height 8px
+    padding 0 10px
+  &__row
+    display flex
+    align-items center
+    margin-bottom 14px
+    width 100%
+    &:last-child
+      margin-bottom 0
+  &__shard
+    {b_txt_qu16}
+    text-transform uppercase
+    min-width 60px
+  &__option
+    display flex
+    width 14px
+    height 14px
+    border 1px solid $clr_blue
+    border-radius 50%
+    cursor pointer
+    box-sizing border-box
+    margin-right 8px
+    &--active
+      border-color $clr_orange
+      &:after
+        width 6px
+        height 6px
+        content: ''
+        background $clr_orange
+        border-radius 50%
+        margin auto
+.inventory-count-choice
+  display flex
+  align-items center
+  margin 34px auto
+  width 82px
+  &__control
+    color $clr_blue
+    {b_txt_pl16}
+    font-size 21px
+    cursor pointer
+    user-select none
+  &__input
+    width 50px
+    height 30px
+    line-height 30px
+    text-align center
+    background rgba($clr_blue, .04)
+    border 1px solid rgba($clr_blue, .5)
+    color $clr_blue
+    {b_txt_pl16}
+    margin 0 5px
+    f_box_glow($clr_blue, 'in',,6px)
+    &::-webkit-outer-spin-button, &::-webkit-inner-spin-button
+      -webkit-appearance none
+.inventory-items-trade
+  margin 69px 0 70px 0
+  &__item
+    position relative
+    width 100%
+    height 50px
+    border-top 1px solid rgba($clr_blue, 0.5)
+    f_simple_bg($clr_blue_dim, 0.05)
+    &:last-child
+      border-bottom 1px solid rgba($clr_blue, 0.5)
+  &__img
+    width 97px
+    height 45px
+    margin-left 80px
+    margin-top 2px
+
+  &__delete
+    position absolute
+    display inline-block
+    width 24px
+    height 24px
+    overflow hidden
+    top 12px
+    right 120px
+    cursor pointer
+    &:before, &:after
+      content: ''
+      position absolute
+      height 1px
+      width 100%
+      top 50%
+      left 0
+      margin-top: -1px
+      background: $clr_grey
+    &:before
+      transform rotate(45deg)
+    &:after
+      transform rotate(-45deg)
+.inventory-item-exchange-window
+  &__text
+    {b_txt_pl16}
+    color $clr_white
+    text-align center
+  &__image
+    margin 20px 0
+    text-align center

@@ -1,0 +1,218 @@
+/**
+  *@--Легенда
+  *1. $variable -> переменная, сохранено только значение простого свойства.
+      Вставка:
+      .class
+        property: $variable
+
+  *2. b_variable -> блок, может сохранять блок кода для дальнейшего использования.
+      Вставка:
+      .class
+        {_variable}
+
+  *3. f_variable -> функция, возвращает результат какой-либо операции.
+      Вставка:
+      .class
+        border-color f_get_rgba(#ccc, .3)
+
+  *4. m_variable -> миксин, возвращает блок кода
+      Вставка:
+      .class
+        m_variable()
+***/
+
+
+//--[Цвета]--//
+$clr_white     = #ffffff
+$clr_black     = #000000
+$clr_red       = #ff0100
+$clr_red_lite  = #ff4400
+$clr_orange    = #ff9c00
+$clr_yellow    = #ffe26e
+$clr_grey      = #a4a4a4
+$clr_blue      = #50fcf5
+$clr_blue_dim  = #2eada8
+$clr_blue_dark = #08201e
+//--[/Цвета]--//
+
+
+//--[Подсветка текста]--//
+$glow_white  = 0 0 12px $clr_white,  0 0 6px $clr_white
+$glow_blue   = 0 0 12px $clr_blue,   0 0 6px $clr_blue
+$glow_yellow = 0 0 12px $clr_yellow, 0 0 6px $clr_yellow
+$glow_orange = 0 0 12px $clr_orange, 0 0 6px $clr_orange
+$glow_red    = 0 0 12px $clr_red,    0 0 6px $clr_red
+//--[/Подсветка текста]--//
+
+
+//--[/Скругление]--//
+$brd_rad = 5px
+$brd_rad_small = 3px
+//--[/Скругление]--//
+
+
+//--[/Пути]--//
+$static_path = 'https://wf.cdn.gmru.net/minigames/battlepass_v3/static/wf/build/'
+//--[/Скругление]--//
+
+
+//--[Текстовки]--//
+b_txt_qu25 = @block {
+  font-size 25px
+  font-family 'Quantico'
+}
+b_txt_qu20 = @block {
+  font-size 20px
+  font-family 'Quantico'
+}
+b_txt_qu16 = @block {
+  font-size 16px
+  font-family 'Quantico'
+}
+b_txt_qu14 = @block {
+  font-size 14px
+  font-family 'Quantico'
+}
+b_txt_qu12 = @block {
+  font-size 12px
+  font-family 'Quantico'
+}
+b_txt_pl20 = @block {
+  font-size 20px
+  font-family 'plumblight'
+}
+b_txt_pl16 = @block {
+  font-size 16px
+  font-family 'plumblight'
+}
+b_txt_pl14 = @block {
+  font-size 14px
+  font-family 'plumblight'
+}
+b_txt_pl12 = @block {
+  font-size 12px
+  font-family 'plumblight'
+}
+//--[/Текстовки]--//
+b_pos_center = @block {
+  position absolute
+  left 50%
+  top 50%
+  transform translate(-50%, -50%)
+}
+
+
+//--[Функции]--//
+// Простая обводка
+f_simple_border(color = $clr_blue, opacity = .5)
+  border 1px solid rgba(color, opacity)
+
+// Простой полупрозрачный фон
+f_simple_bg(color = $clr_blue, opacity = .15)
+  background rgba(color, opacity)
+
+// Наружное свечение
+f_box_glow(color, type = 'out', outer_dist = 20px,  inner_dist = 15px)
+  if type == 'in'
+    box-shadow inset 0px 0px inner_dist rgba(color, .5)
+  else if type == 'double'
+    box-shadow 0px 0px outer_dist rgba(color, 0.5), inset 0px 0px inner_dist rgba(color, .5)
+  else
+    box-shadow 0px 0px outer_dist rgba(color, 0.5)
+
+
+// Внешнее свечение
+f_glow_in(color)
+  box-shadow inset 0px 0px 15px rgba(color, .7)
+//--[/Функции]--//
+
+
+//--[Миксины]--//
+// Двойная рамка
+m_double_border()
+  border 1px solid rgba($clr_blue, .5)
+  border-radius $brd_rad
+  position: relative
+  &::before
+    content ''
+    display block
+    width 100%
+    height 100%
+    position absolute
+    left 0
+    top 0
+    padding 4px
+    border 1px solid rgba($clr_blue, .35)
+    border-radius ($brd_rad + 2)
+    transform translate(-5px, -5px)
+    z-index: -1;
+//--[/Миксины]--//
+
+main_button =
+  border-radius $brd_rad_small
+  text-transform uppercase
+  text-align center
+  line-height 30px
+  margin auto
+  transition all .1s linear
+  background $clr_orange
+  color $clr_white
+  text-shadow $glow_yellow
+  {b_txt_qu14}
+  f_box_glow($clr_red, , 30px)
+  user-select none
+  cursor pointer
+  &:hover
+    background $clr_white
+    color $clr_orange
+
+  &--disable
+    cursor default
+    background $clr_grey
+    &:hover
+      background $clr_grey
+      color $clr_white
+
+border-corner =
+  position relative
+  &:before
+    display block
+    content ""
+    width 7px
+    height 7px
+    position absolute
+    top 0
+    left 0
+    border-top 1px solid $clr_blue
+    border-left 1px solid $clr_blue
+  &:after
+    display block
+    content ""
+    width 7px
+    height 7px
+    position absolute
+    top 0
+    right 0
+    border-top 1px solid $clr_blue
+    border-right 1px solid $clr_blue
+  & > span
+    &:before
+      display block
+      content ""
+      width 7px
+      height 7px
+      position absolute
+      bottom 0
+      left 0
+      border-bottom 1px solid $clr_blue
+      border-left 1px solid $clr_blue
+    &:after
+      display block
+      content ""
+      width 7px
+      height 7px
+      position absolute
+      bottom 0
+      right 0
+      border-bottom 1px solid $clr_blue
+      border-right 1px solid $clr_blue
